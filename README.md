@@ -17,7 +17,10 @@
 # Register as a service in the app.php file:
 ```php
 <?php
-...
+//...
+$versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
+$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+
 $migrationsDoctrineDocuments = array(
                                 array(
                                     'type' => 'annotation',
@@ -27,8 +30,7 @@ $migrationsDoctrineDocuments = array(
                                     'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
                                 ));
 $app['doctrine.odm.mongodb.documents'] = array_merge($app['doctrine.odm.mongodb.documents'], $migrationsDoctrineDocuments);
-$versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
-$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+
 $app[$migrationsManagerName] = $app->share(function() use ($app) {
     return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsNamespace);
 });
@@ -36,7 +38,10 @@ $app[$migrationsManagerName] = $app->share(function() use ($app) {
 
 # Register command, in console.php file:
 ```php
+<?php
+//...
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+
 $console->addCommands(array(
     new Gigigointernals\Mongomigrations\Console\MigrationsCommand($app[$migrationsManagerName])
 ));
@@ -47,7 +52,7 @@ $console->addCommands(array(
 * Create a folder in your project directory, for example: **/src/Gigigo/Migrations**
 * Adds a file version for each new version you want to apply in the database.
 * The file name must begin with the letter "V" followed by the version number.
-* The first file must be "V1".
+* The first file must be "V1" ( **/src/Gigigo/Migrations/V1.php** )
 * The version number must be secuential.
 * The next file will be "V2" and so on.
 
