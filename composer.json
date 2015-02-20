@@ -10,7 +10,7 @@
         }],
     "autoload": {
         "psr-0": {
-            "Gigigo\\Migrations": ""
+            "Gigigo\\Migrations": "src/"
         }
     },
     "require": {
