@@ -1,7 +1,7 @@
 # Gigigo Mongodb Migrations
 This library is used to track the queries to be made in database.
 
-# How load the library
+### How load the library
 ```json
 {
     "repositories": [
@@ -17,7 +17,7 @@ This library is used to track the queries to be made in database.
 }
 ```
 
-# Register as a service in the app.php file:
+### Register as a service in the app.php file:
 ```php
 <?php
 
@@ -44,7 +44,7 @@ $app[$migrationsManagerName] = $app->share(function() use ($app) {
 
 ```
 
-# Register command, in console.php file:
+### Register command, in console.php file:
 ```php
 <?php
 
@@ -60,7 +60,7 @@ $console->addCommands(array(
 
 ```
 
-# Usage
+### Usage
 
 * Create a folder in your project directory, for example: **/src/Gigigo/Migrations**
 * Adds a file version for each new version you want to apply in the database.
@@ -113,7 +113,7 @@ class V0 extends VersionBase
 ```
 (This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
 
-# Command
+### Command
 Update database to the version 2:
 ```sh
 /# php bin/console gigigo:migrations:up --versiondb 2
