@@ -1,0 +1,18 @@
+{
+    "name": "gigigo/mongo-migrations",
+    "type": "library",
+    "description": "qué hace",
+    "keywords": ["migrations", "mongodb", "silex"],
+    "homepage": "https://bitbucket.org/gigigo/mongo-migrations",
+    "license": "MIT",
+    "authors": [{
+            "name": "Alejandro Arranz Sancho"
+        }],
+    "autoload": {
+        "psr-0": {
+            "Gigigo\\Migrations": "src/"
+        }
+    },
+    "require": {
+    }
+}
