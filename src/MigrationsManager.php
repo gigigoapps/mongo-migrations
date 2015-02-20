@@ -1,9 +1,9 @@
 <?php
 
-namespace Gigigo\Migrations;
+namespace Gigigointernals\Mongomigrations;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Gigigo\Migrations\Model\Version;
+use Gigigointernals\Mongomigrations\Model\Version;
 
 /**
  * Database update services
@@ -12,8 +12,8 @@ use Gigigo\Migrations\Model\Version;
 class MigrationsManager
 {
     const VERSION_FILES_PATH = '/Versions';
-    const VERSIONS_CLASSNAME_PREFIX = '\Gigigo\Migrations\Versions';
-    const VERSION_MODEL = '\Gigigo\Migrations\Model\Version';
+    const VERSIONS_CLASSNAME_PREFIX = '\Gigigointernals\Mongomigrations\Versions';
+    const VERSION_MODEL = '\Gigigointernals\Mongomigrations\Model\Version';
     
     protected $db;
     protected $firstTime = false;

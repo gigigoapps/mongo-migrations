@@ -1,13 +1,13 @@
 <?php
 
-namespace Gigigo\Migrations\Model;
+namespace Gigigointernals\Mongomigrations\Model;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
  * @ODM\Document(
  * collection="Version",
- * repositoryClass="Gigigo\Migrations\Model\VersionRepository"
+ * repositoryClass="Gigigointernals\Mongomigrations\Model\VersionRepository"
  * )
  */
 class Version

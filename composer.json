@@ -1,7 +1,7 @@
 {
     "name": "gigigo/mongo-migrations",
     "type": "library",
-    "description": "qué hace",
+    "description": "description",
     "keywords": ["migrations", "mongodb", "silex"],
     "homepage": "https://bitbucket.org/gigigo/mongo-migrations",
     "license": "MIT",
@@ -10,7 +10,7 @@
         }],
     "autoload": {
         "psr-0": {
-            "Gigigo\\Migrations": "src/"
+            "Gigigointernals\\Mongomigrations\\": "src/"
         }
     },
     "require": {

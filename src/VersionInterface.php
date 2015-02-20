@@ -1,8 +1,8 @@
 <?php
 
-namespace Gigigo\Migrations;
+namespace Gigigointernals\Mongomigrations;
 
-interface MigrationsInterface
+interface VersionInterface
 {
     /**
      * 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Gigigo\Migrations\Model;
+namespace Gigigointernals\Mongomigrations\Model;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 

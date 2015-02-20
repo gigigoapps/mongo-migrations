@@ -1,18 +1,18 @@
 <?php
 
-namespace Gigigo\Migrations\Console;
+namespace Gigigointernals\Mongomigrations\Console;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
-use Gigigo\Migrations\MigrationsManager;
+use Gigigointernals\Mongomigrations\MigrationsManager;
 
 
 class MigrationsCommand extends Command
 {
-    /** @var Gigigo\Migrations\MigrationsManager */
+    /** @var Gigigointernals\Mongomigrations\MigrationsManager */
     protected $mm;
     
     /** @var Symfony\Component\Console\Output\OutputInterface */
