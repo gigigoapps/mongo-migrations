@@ -50,13 +50,13 @@ $console->addCommands(array(
 
 Create a folder in your project directory, for example: **/src/Gigigo/Migrations**
 
-Adds a file version for each new version you want to apply in the database.<br>
-The file name must begin with the letter "V" followed by the version number.<br>
-The first file must be "V1".<br>
-The version number must be secuential.<br>
+Adds a file version for each new version you want to apply in the database.<br />
+The file name must begin with the letter "V" followed by the version number.<br />
+The first file must be "V1".<br />
+The version number must be secuential.<br />
 The next file will be "V2" and so on.
 
-The file must be like this:<br>
+The file must be like this:<br />
 (This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
 
 ```php
