@@ -12,7 +12,6 @@ use Gigigointernals\Mongomigrations\Model\Version;
 class MigrationsManager
 {
     const VERSION_FILES_PATH = '/Versions';
-    const VERSIONS_CLASSNAME_PREFIX = '\Gigigointernals\Mongomigrations\Versions';
     const VERSION_MODEL = '\Gigigointernals\Mongomigrations\Model\Version';
     
     protected $db;
@@ -21,6 +20,7 @@ class MigrationsManager
     protected $maxVersion;
     protected $versionsClasses = [];
     protected $versionsClassesToUpdate = [];
+    protected $versionsNamespace;
     
     protected $checkVersionToUpdateMessage = '';
     protected $lastUpDescription = '';
@@ -28,9 +28,10 @@ class MigrationsManager
     protected $lastUpVersion = '';
     protected $lastUpError = false;
     
-    public function __construct(DocumentManager $db)
+    public function __construct(DocumentManager $db, $versionsNamespace)
     {
         $this->db = $db;
+        $this->setVersionNamespace($versionsNamespace);
         
         if ($handle = opendir(__DIR__ . self::VERSION_FILES_PATH)) {
             while (false !== ($file = readdir($handle))) {
@@ -77,7 +78,7 @@ class MigrationsManager
             return false;
         }
         
-        $classNS = self::VERSIONS_CLASSNAME_PREFIX . '\\' . ucfirst($versionClassName);
+        $classNS = $this->versionsNamespace . '\\' . ucfirst($versionClassName);
         if (class_exists($classNS)) {
             $versionClass = new $classNS($this->db);
         } else {
@@ -208,6 +209,22 @@ class MigrationsManager
     private function getVersionNumber($version)
     {
         return (int)substr($version, 1);
+    }
+    
+    /**
+     * Set the namespace of the version classes
+     * 
+     * @param string $versionsNamespace
+     */
+    private function setVersionNamespace($versionsNamespace)
+    {
+        if (substr($versionsNamespace, 0, 1) != '\\') {
+            $versionsNamespace = '\\' . $versionsNamespace;
+        }
+        if (substr($versionsNamespace, -1, 1) == '\\') {
+            $versionsNamespace = substr($versionsNamespace, 0, -1);
+        }
+        $this->versionsNamespace = $versionsNamespace;
     }
     
     /**
