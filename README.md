@@ -1,3 +1,6 @@
+# Gigigo Mongodb Migrations
+This library is used to track the queries to be made in database.
+
 # How load the library
 ```json
 {
