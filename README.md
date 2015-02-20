@@ -1,5 +1,5 @@
 # How load the library
-```php
+```json
 {
     "repositories": [
         {
@@ -16,6 +16,11 @@
 
 # Register as a service in the app.php file:
 ```php
+<?php
+...
+$versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
+$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+
 $migrationsDoctrineDocuments = array(
                                 array(
                                     'type' => 'annotation',
@@ -25,8 +30,7 @@ $migrationsDoctrineDocuments = array(
                                     'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
                                 ));
 $app['doctrine.odm.mongodb.documents'] = array_merge($app['doctrine.odm.mongodb.documents'], $migrationsDoctrineDocuments);
-$versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
-$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+
 $app[$migrationsManagerName] = $app->share(function() use ($app) {
     return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsNamespace);
 });
@@ -34,6 +38,8 @@ $app[$migrationsManagerName] = $app->share(function() use ($app) {
 
 # Register command, in console.php file:
 ```php
+<?php
+...
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
 $console->addCommands(array(
     new Gigigointernals\Mongomigrations\Console\MigrationsCommand($app[$migrationsManagerName])
