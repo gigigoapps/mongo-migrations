@@ -1,6 +1,5 @@
-
-How load the library
-
+# How load the library
+```php
 {
     "repositories": [
         {
@@ -13,10 +12,10 @@ How load the library
 
     }
 }
+```
 
-
-Register as a service in the app.php file:
-
+# Register as a service in the app.php file:
+```php
 $migrationsDoctrineDocuments = array(
                                 array(
                                     'type' => 'annotation',
@@ -31,30 +30,32 @@ $migrationsManagerName = 'migrations.manager'; // for example (name of the servi
 $app[$migrationsManagerName] = $app->share(function() use ($app) {
     return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsNamespace);
 });
+```
 
-
-Register command, in console.php file:
-
+# Register command, in console.php file:
+```php
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
 $console->addCommands(array(
     new Gigigointernals\Mongomigrations\Console\MigrationsCommand($app[$migrationsManagerName])
 ));
+```
 
+# Usage
 
-Usage
+Create a folder in your project directory, for example: **/src/Gigigo/Migrations**
 
-Create a folder in your project directory, for example: /src/Gigigo/Migrations
+Adds a file version for each new version you want to apply in the database.<br>
+The file name must begin with the letter "V" followed by the version number.<br>
+The first file must be "V1".<br>
+The version number must be secuential.<br>
+The next file will be "V2" and so on.
 
-Adds a file version for each new version you want to apply in the database.
-The file name must begin with the letter "V" followed by the version number.
-The first file must be "V1".
-The version number must be secuential. The next file will be "V2".
-
-The file must be like this:
+The file must be like this:<br>
 (This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
 
+```php
 <?php
-namespace Gigigo\Migrations;
+namespace Gigigo\Migrations; // your namespace
 
 use Gigigointernals\Mongomigrations\VersionBase as VersionBase;
 
@@ -70,7 +71,7 @@ class V0 extends VersionBase
     
     public function up()
     {
-        $this->db->createQueryBuilder('namespace\classname')
+        $this->db->createQueryBuilder('namespace\documentname')
             ->update()
             ->multiple(true)
             ->field('active')->set(true)
@@ -81,7 +82,7 @@ class V0 extends VersionBase
     
     public function down()
     {
-        $this->db->createQueryBuilder('namespace\classname')
+        $this->db->createQueryBuilder('namespace\documentname')
             ->update()
             ->multiple(true)
             ->unsetField('active')
@@ -90,9 +91,5 @@ class V0 extends VersionBase
         ;
     }
 }
-
-This file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php
-
-The name
-
+```
 
