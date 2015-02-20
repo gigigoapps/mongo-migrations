@@ -17,7 +17,9 @@
 # Register as a service in the app.php file:
 ```php
 <?php
+
 //...
+
 $versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
 
@@ -34,17 +36,25 @@ $app['doctrine.odm.mongodb.documents'] = array_merge($app['doctrine.odm.mongodb.
 $app[$migrationsManagerName] = $app->share(function() use ($app) {
     return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsNamespace);
 });
+
+//...
+
 ```
 
 # Register command, in console.php file:
 ```php
 <?php
+
 //...
+
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
 
 $console->addCommands(array(
     new Gigigointernals\Mongomigrations\Console\MigrationsCommand($app[$migrationsManagerName])
 ));
+
+//...
+
 ```
 
 # Usage
@@ -60,6 +70,7 @@ The file must be like this:
 
 ```php
 <?php
+
 namespace Gigigo\Migrations; // your namespace
 
 use Gigigointernals\Mongomigrations\VersionBase as VersionBase;
@@ -102,14 +113,17 @@ class V0 extends VersionBase
 # Command
 Update database to the version 2:
 ```sh
-# php bin/console gigigo:migrations:up --versiondb 2
+/# php bin/console gigigo:migrations:up --versiondb 2
 ```
+
 Update database to the max version:
 ```sh
-# php bin/console gigigo:migrations:up
+/# php bin/console gigigo:migrations:up
 ```
+
 Possible response:
 ```sh
+/# php bin/console gigigo:migrations:up
 Start update database...
 [Current version: 3]
 [Max version: 5]
