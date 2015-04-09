@@ -1,12 +1,13 @@
 # Gigigo Mongodb Migrations
 This library is used to track the queries to be made in database.
 
-### How load the library
+### How to load the library into composer.json
+
 ```json
 {
     "repositories": [
         {
-            "url": "https://arranzsancho@bitbucket.org/arranzsancho/mongo-migrations.git",
+            "url": "https://github.com/gigigoapps/mongo-migrations.git",
             "type": "git"
         }
     ],

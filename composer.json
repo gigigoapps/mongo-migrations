@@ -1,18 +1,22 @@
 {
-    "name": "gigigo/mongo-migrations",
+    "name": "gigigoapps/mongo-migrations",
     "type": "library",
-    "description": "description",
+    "description": "Track queries to be made in mongodb (silex)",
     "keywords": ["migrations", "mongodb", "silex"],
-    "homepage": "https://bitbucket.org/gigigo/mongo-migrations",
+    "homepage": "https://github.com/gigigoapps/mongo-migrations",
     "license": "MIT",
-    "authors": [{
-            "name": "Alejandro Arranz Sancho"
-        }],
+    "authors": [
+        {
+            "name": "Alejandro Arranz Sancho",
+            "role": "Developer"
+        }
+        ],
     "autoload": {
         "psr-0": {
             "Gigigointernals\\Mongomigrations\\": "src/"
         }
     },
     "require": {
+        "silex/silex": "~1.0"
     }
 }
