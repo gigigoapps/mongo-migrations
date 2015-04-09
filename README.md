@@ -27,13 +27,13 @@ $versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your projec
 $migrationsManagerName = 'migrations.manager'; // for example (name of the service)
 
 $migrationsDoctrineDocuments = array(
-                                array(
-                                    'type' => 'annotation',
-                                    'path' => array(
-                                        'vendor/gigigo/mongo-migrations/src/Model',
-                                    ),
-                                    'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
-                                ));
+    array(
+        'type' => 'annotation',
+        'path' => array(
+            'vendor/gigigo/mongo-migrations/src/Model',
+        ),
+        'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
+    ));
 $app['doctrine.odm.mongodb.documents'] = array_merge($app['doctrine.odm.mongodb.documents'], $migrationsDoctrineDocuments);
 
 $app[$migrationsManagerName] = $app->share(function() use ($app) {
