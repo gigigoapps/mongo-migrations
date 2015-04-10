@@ -2,7 +2,6 @@
 This library is used to track the queries to be made in database.
 
 ### How to load the library into composer.json
-
 ```json
 {
     "repositories": [
@@ -17,6 +16,7 @@ This library is used to track the queries to be made in database.
     }
 }
 ```
+
 Run:
 ```sh
 /# composer update gigigoapps/mongo-migrations
@@ -46,7 +46,6 @@ $app[$migrationsManagerName] = $app->share(function() use ($app) {
 });
 
 //...
-
 ```
 
 ### Register command, in console.php file:
@@ -116,7 +115,7 @@ class V0 extends VersionBase
     }
 }
 ```
-(This example file are located in vendor/gigigoapps/mongo-migrations/src/Versions/V0.php)
+(This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
 
 ### Command
 Update database to the version 2:
