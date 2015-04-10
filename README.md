@@ -58,7 +58,7 @@ NOTE: MongoDBODMServiceProvider must be registered before => at least $app['doct
 
 //...
 
-$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+$migrationsManagerName = 'migrations.manager'; // for example (name of the service). The same in app.php
 
 $console->addCommands(array(
     new Gigigointernals\Mongomigrations\Console\MigrationsCommand($app[$migrationsManagerName])
@@ -122,9 +122,9 @@ class V0 extends VersionBase
 (This example file is located in vendor/gigigoapps/mongo-migrations/src/Versions/V0.php)
 
 ### Command
-Update database to the version 2:
+Update database to the version 1:
 ```sh
-/# php bin/console gigigo:migrations:up --versiondb 2
+/# php bin/console gigigo:migrations:up --versiondb 1
 ```
 
 Update database to the max version:
