@@ -1,6 +1,6 @@
 <?php
 
-namespace Gigigointernals\Mongomigrations\Versions;
+namespace Gigigo\Migrations; // change this, use your namespace
 
 
 use Gigigointernals\Mongomigrations\VersionBase as VersionBase;
