@@ -12,10 +12,14 @@ This library is used to track the queries to be made in database.
         }
     ],
     "require": {
-        "gigigo/mongo-migrations": "dev-master"
+        "gigigoapps/mongo-migrations": "dev-master"
 
     }
 }
+```
+Run:
+```sh
+/# composer update gigigoapps/mongo-migrations
 ```
 
 ### Register as a service in the app.php file:
@@ -31,7 +35,7 @@ $migrationsDoctrineDocuments = array(
     array(
         'type' => 'annotation',
         'path' => array(
-            'vendor/gigigo/mongo-migrations/src/Model',
+            'vendor/gigigoapps/mongo-migrations/src/Model',
         ),
         'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
     ));
@@ -112,7 +116,7 @@ class V0 extends VersionBase
     }
 }
 ```
-(This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
+(This example file are located in vendor/gigigoapps/mongo-migrations/src/Versions/V0.php)
 
 ### Command
 Update database to the version 2:
