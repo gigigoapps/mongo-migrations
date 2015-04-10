@@ -11,7 +11,6 @@ use Gigigointernals\Mongomigrations\Model\Version;
  */
 class MigrationsManager
 {
-    const VERSION_FILES_PATH = '/Versions';
     const VERSION_MODEL = '\Gigigointernals\Mongomigrations\Model\Version';
     
     protected $db;
@@ -28,12 +27,12 @@ class MigrationsManager
     protected $lastUpVersion = '';
     protected $lastUpError = false;
     
-    public function __construct(DocumentManager $db, $versionsNamespace)
+    public function __construct(DocumentManager $db, $versionsPath, $versionsNamespace)
     {
         $this->db = $db;
         $this->setVersionNamespace($versionsNamespace);
         
-        if ($handle = opendir(__DIR__ . self::VERSION_FILES_PATH)) {
+        if ($handle = opendir($versionsPath)) {
             while (false !== ($file = readdir($handle))) {
                 if ($this->isValidFile($file)) {
                     $version = substr($file, 0, strpos($file, '.'));
