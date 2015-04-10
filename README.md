@@ -4,6 +4,8 @@ This library is used to track the queries to be made in database.
 ### How to load the library into composer.json
 ```json
 {
+    ...
+
     "repositories": [
         {
             "url": "https://github.com/gigigoapps/mongo-migrations.git",
@@ -11,9 +13,12 @@ This library is used to track the queries to be made in database.
         }
     ],
     "require": {
+        ...
         "gigigoapps/mongo-migrations": "dev-master"
 
     }
+
+    ...
 }
 ```
 
@@ -70,7 +75,7 @@ $console->addCommands(array(
 
 ### Usage
 
-* Create a folder in your project directory, for example: **/src/Gigigo/Migrations**
+* Create a folder in your project directory, for example: **/src/Gigigo/Migrations** (set this folder into app.php like "$versionsPath")
 * Adds a file version for each new version you want to apply in the database.
 * The file name must begin with the letter "V" followed by the version number.
 * The first file must be "V1" ( **/src/Gigigo/Migrations/V1.php** )
@@ -82,7 +87,7 @@ The file must be like this:
 ```php
 <?php
 
-namespace Gigigo\Migrations; // your namespace
+namespace Gigigo\Migrations; // your namespace (set this namespace into app.php like "$versionsNamespace")
 
 use Gigigointernals\Mongomigrations\VersionBase as VersionBase;
 
@@ -121,7 +126,7 @@ class V0 extends VersionBase
 ```
 (This example file is located in vendor/gigigoapps/mongo-migrations/src/Versions/V0.php)
 
-### Command
+### Command examples
 Update database to the version 1:
 ```sh
 /# php bin/console gigigo:migrations:up --versiondb 1
