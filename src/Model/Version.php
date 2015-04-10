@@ -6,7 +6,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
  * @ODM\Document(
- * collection="Version",
+ * collection="VersionMongoMigrations",
  * repositoryClass="Gigigointernals\Mongomigrations\Model\VersionRepository"
  * )
  */
