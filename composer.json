@@ -2,7 +2,7 @@
     "name": "gigigoapps/mongo-migrations",
     "type": "library",
     "description": "Track queries to be made in mongodb (silex)",
-    "keywords": ["migrations", "mongodb", "silex"],
+    "keywords": ["migrations", "mongodb-odm", "silex", "doctrine"],
     "homepage": "https://github.com/gigigoapps/mongo-migrations",
     "license": "MIT",
     "authors": [
@@ -12,11 +12,12 @@
         }
         ],
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Gigigointernals\\Mongomigrations\\": "src/"
         }
     },
     "require": {
-        "silex/silex": "~1.0"
+        "silex/silex": "~1.0",
+        "doctrine/mongodb-odm": "1.0.*@beta"
     }
 }
