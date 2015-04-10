@@ -28,8 +28,9 @@ Run:
 
 //...
 
-$versionsNamespace = '\Gigigo\Migrations'; // for example (folder in your project directory)
-$migrationsManagerName = 'migrations.manager'; // for example (name of the service)
+$versionsPath = __DIR__ . '/../src/Gigigo/Migrations'; // for example (folder in your project directory)
+$versionsNamespace = '\Gigigo\Migrations'; // for example (namespace in your project directory)
+$migrationsManagerName = 'migrations.manager'; // for example (name of the service). The same in console.php
 
 $migrationsDoctrineDocuments = array(
     array(
@@ -37,16 +38,19 @@ $migrationsDoctrineDocuments = array(
         'path' => array(
             'vendor/gigigoapps/mongo-migrations/src/Model',
         ),
-        'namespace' => 'Gigigointernals\Mongomigrations\src\Model',
+        'namespace' => 'Gigigointernals\Mongomigrations\Model',
     ));
 $app['doctrine.odm.mongodb.documents'] = array_merge($app['doctrine.odm.mongodb.documents'], $migrationsDoctrineDocuments);
 
-$app[$migrationsManagerName] = $app->share(function() use ($app) {
-    return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsNamespace);
+$app[$migrationsManagerName] = $app->share(function() use ($app, $versionsPath, $versionsNamespace) {
+    return new \Gigigointernals\Mongomigrations\MigrationsManager($app['doctrine.odm.mongodb.dm'], $versionsPath, $versionsNamespace);
 });
 
 //...
 ```
+
+NOTE: MongoDBODMServiceProvider must be registered before => at least $app['doctrine.odm.mongodb.documents'] must be filled previously.
+
 
 ### Register command, in console.php file:
 ```php
@@ -115,7 +119,7 @@ class V0 extends VersionBase
     }
 }
 ```
-(This example file are located in vendor/gigigo/mongo-migrations/src/Versions/V0.php)
+(This example file is located in vendor/gigigoapps/mongo-migrations/src/Versions/V0.php)
 
 ### Command
 Update database to the version 2:
@@ -150,3 +154,7 @@ Done.
 -----------------------
 End update database in 0.065269947052002 seconds with 9.6119613647461 Mb.
 ```
+
+### ToDo
+- List versions and show current version
+- Update to previous version
