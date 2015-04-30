@@ -1,4 +1,4 @@
-# Gigigo Mongodb Migrations
+# Gigigo Mongodb Migrations for use in Silex projects
 This library is used to track the queries to be made in database.
 
 ### How to load the library into composer.json
